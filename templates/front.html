@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if posts %}
+    {% for p in posts %}
+      {{ p.render() | safe }}
+      <div>
+      {% if user %}
+  	    {% if user.key().id() == p.user_id %}
+  		    <a href="/blog/{{p.key().id()}}/edit">Edit</a>
+  		    <a href="/blog/{{p.key().id()}}/delete">Delete</a>	
+  		  {% endif %}
+      {% endif %}
+    </div>
+    <br/><br/>
+    {% endfor %}
+  {% else %}
+    <p>No posts to show!</p>
+  {% endif %}
+
+{% endblock %}

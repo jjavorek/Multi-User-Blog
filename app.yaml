@@ -1,0 +1,24 @@
+runtime: python27
+api_version: 1
+#Boolean threadsafe equal to true. 
+#This allows the app to handle simultaneous request.
+threadsafe: true
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /.*
+  script: blog.app
+
+libraries:
+- name: jinja2
+  version: latest
+
+- name: PIL
+  version: "1.1.7"
+
+  # - (hyphen) = means you're going to be setting up a list of name-value pairs. 
+  #url: /.*. = means every request at the root of the app
+
+  #spacing is critical in yaml
